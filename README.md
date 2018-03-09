@@ -1,0 +1,2 @@
+# hsemulator
+a hearthstone emulator

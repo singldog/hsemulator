@@ -1,0 +1,19 @@
+{
+    "type":"Minion",
+    "_comment":"描述了一个攻击力涨到3点的法力龙",
+    "data":{
+        "name":"Mana Wyrm",
+        "imgUri":"mana_wyrm.jpg",
+        "isGold":1,
+        "attack":{
+            "val":3,
+            "status":1
+        },
+        "health":3
+    },
+    "dependencies":[
+        {
+            "type":"EventIcon"
+        }
+    ]
+}

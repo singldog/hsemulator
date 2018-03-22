@@ -1,0 +1,17 @@
+{
+    "type":"Minion",
+    "_comment":"描述了一个在战场上，受到残阳祭祀+1/+1，又受到3点伤害的的水元素",
+    "data":{
+        "name":"Water Elemental",
+        "imgUri":"water_elemental.jpg",
+        "isGold":0,
+        "attack":{
+            "val":4,
+            "status":1
+        },
+        "health":{
+            "val":4,
+            "status":-1
+        }
+    }
+}

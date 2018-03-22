@@ -1,0 +1,21 @@
+{
+    "type":"Effect",
+    "_comment":"用于描述破碎残阳祭祀对于随从的buff",
+    "data":{
+        "name":"残阳祭祀的祝福"
+    },
+    "dependecies":[
+        {
+            "type":"AttackOffsetEffect",
+            "data":{
+                "offset":1
+            }
+        },
+        {
+            "type":"HealthOffsetEffect",
+            "data":{
+                "offset":1
+            }
+        }
+    ]
+}

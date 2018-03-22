@@ -1,0 +1,27 @@
+{
+    "type":"Card",
+    "_comment":"描述了一个在手牌中的精灵弓箭手卡牌",
+    "data":{
+        "name":"Elf Archer",
+        "imgUri":"elf_archer.jpg",
+        "isGold":0,
+        "desc":"Battlecry: do 1 damage",
+        "playable":1
+    },
+    "dependencies":[
+        {
+            "type":"MinionCard",
+            "data":{
+                "attack":1,
+                "health":1,
+                "mana":1
+            }
+        },
+        {
+            "type":"TargetRequired",
+            "data":{
+                "targetType":"Character"
+            }
+        }
+    ]
+}

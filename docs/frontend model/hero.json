@@ -1,0 +1,25 @@
+{
+    "type":"Hero",
+    "data":{
+        "name":"Jaina Proudmore",
+        "imgUri":"jaina_proudmore.jpg",
+        "isGold":0,
+        "attack":0,
+        "health":30,
+        "heroPower":{
+            "data":{
+                "name":"fire blast",
+                "desc":"Do 1 damage",
+                "imgUri":"fire_blast.jpg"
+            },
+            "dependencies":[
+                {
+                    "type":"TargetRequired",
+                    "data":{
+                        "targetType":"Character"
+                    }
+                }
+            ]
+        }
+    }
+}

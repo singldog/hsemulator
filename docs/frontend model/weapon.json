@@ -1,0 +1,19 @@
+{
+    "type":"Weapon",
+    "_comment":"用了一个耐久的血刃剃刀",
+    "data":{
+        "name":"血刃剃刀",
+        "imgUri":"xxxxx.jpg",
+        "isGold":0,
+        "attack":2,
+        "durability":{
+            "val":1,
+            "status":-1
+        }
+    },
+    "dependencies":[
+        {
+            "type":"DeathrattleIcon"
+        }
+    ]
+}

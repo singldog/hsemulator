@@ -12,7 +12,7 @@
                 "desc":"Do 1 damage",
                 "imgUri":"fire_blast.jpg"
             },
-            "dependencies":[
+            "renderers":[
                 {
                     "type":"TargetRequired",
                     "data":{

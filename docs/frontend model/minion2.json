@@ -11,7 +11,7 @@
         },
         "health":3
     },
-    "dependencies":[
+    "renderers":[
         {
             "type":"EventIcon"
         }

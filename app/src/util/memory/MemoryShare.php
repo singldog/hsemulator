@@ -23,7 +23,7 @@ class MemoryShare{
     }
 
     public function save($data, $offset = 0){
-        $result = shmop_write($this->shm_id, pack('A*', json_encode($data)), $offset);
+        $result = shmop_write($this->shm_id, pack('A*', serialize($data)), $offset);
         if($result === false){
             throw new \Exception('保存信息至内存时失败失败', 13);
         }
@@ -31,6 +31,6 @@ class MemoryShare{
     }
 
     public function read($offset = 0, $blockSize = self::BLOCKSIZE_1M){
-        return json_decode(unpack('A*', shmop_read($this->shm_id, $offset, $blockSize))[1]);
+        return unserialize(unpack('A*', shmop_read($this->shm_id, $offset, $blockSize))[1]);
     }
 }

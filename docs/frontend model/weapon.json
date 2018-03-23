@@ -11,7 +11,7 @@
             "status":-1
         }
     },
-    "dependencies":[
+    "renderers":[
         {
             "type":"DeathrattleIcon"
         }

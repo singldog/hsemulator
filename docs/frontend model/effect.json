@@ -4,7 +4,7 @@
     "data":{
         "name":"残阳祭祀的祝福"
     },
-    "dependecies":[
+    "renderers":[
         {
             "type":"AttackOffsetEffect",
             "data":{

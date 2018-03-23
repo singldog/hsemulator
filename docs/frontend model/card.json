@@ -8,7 +8,7 @@
         "desc":"Battlecry: do 1 damage",
         "playable":1
     },
-    "dependencies":[
+    "renderers":[
         {
             "type":"MinionCard",
             "data":{

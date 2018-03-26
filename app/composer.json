@@ -1,8 +1,5 @@
 {
     "name": "chutzstudio/hsemulator",
     "description": "hsemulator",
-    "type": "project",
-    "require": {
-        "app/util/memory": ""
-    }
+    "type": "project"
 }

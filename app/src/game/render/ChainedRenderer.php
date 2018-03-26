@@ -13,14 +13,14 @@ abstract class ChainedRenderer implements IRenderer{
         $this->nextRenderer = $nextRenderer;
     }
 
-    public function render($data){
+    public function render($data, $object){
         if($this->nextRenderer){
-            return $this->nextRenderer->render($this->selfRender($data));
+            return $this->nextRenderer->render($this->renderData($data, $object), $object);
         }else{
-            return $this->renderData($data);
+            return $this->renderData($data, $object);
         }
     }
 
-    public abstract function renderData($data);
+    public abstract function renderData($data, $object);
 
 }

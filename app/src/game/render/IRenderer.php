@@ -4,6 +4,6 @@ namespace app\game\render;
 
 interface IRenderer{
 
-    public function render($object);
+    public function render($data, $object);
 
 }

@@ -25,7 +25,7 @@ class MemoryShare{
     public function save($data, $offset = 0){
         $result = shmop_write($this->shm_id, pack('A*', serialize($data)), $offset);
         if($result === false){
-            throw new \Exception('保存信息至内存时失败失败', 13);
+            throw new \Exception('保存信息至内存时失败', 13);
         }
         return $result;
     }

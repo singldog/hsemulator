@@ -2,6 +2,8 @@
 
 namespace app\game\basis;
 
-class Action{
+interface IAction{
     
+    public function act($game, $params);
+
 }

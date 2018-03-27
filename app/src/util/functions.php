@@ -16,16 +16,16 @@ function conf($key, $val=null){
     }
 }
 
-function outputAsTable($data){
+function output_as_table($data){
     if(!is_array($data)&&!is_object($data)){
         $data = [$data];
     }
     
-    echo '<pre><table style="font-size:18px; width:100%;" border="1" cellspacing="0" cellpadding="4">';
+    echo '<pre><table style="font-size:18px;" border="1" cellspacing="0" cellpadding="4">';
     foreach($data as $k=>$v){
         echo '<tr><td>'.$k.'</td><td>';
         if(is_array($v)||is_object($v)){
-            outputAsTable($v);
+            output_as_table($v);
         }else{
             echo $v;
         }
@@ -35,16 +35,16 @@ function outputAsTable($data){
 }
 
 function d($data){
-    outputAsTable($data);
+    output_as_table($data);
 }
 
 function dd($data){
-    outputAsTable($data);
+    output_as_table($data);
     die();
 }
 
-function apiPath(...$path){
-    $uri = array_filter(explode('/', $_SERVER['REQUEST_URI']));
+function api_path(...$path){
+    $uri = array_filter(explode('/', explode('?', $_SERVER['REQUEST_URI'])[0]));
     
     if(count($uri)==0){
         $uri[] = 'index';
@@ -60,7 +60,7 @@ function apiPath(...$path){
     $uri = $uriNew;
     
     return implode(
-        config['DIR_SEPERATOR'],
+        conf('dirSeperator'),
         array_merge(
             [
                 $_SERVER['DOCUMENT_ROOT'],

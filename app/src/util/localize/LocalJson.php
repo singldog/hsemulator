@@ -13,8 +13,8 @@ class LocalJson implements ILocalize{
             throw new \Exception('未找到指定的缓存文件', 12);
         }
         $data = json_decode($result);
-        $data[$key] = $val;
-        file_put_contents(self::JSON_FILE, json_encode());
+        $data->$key = $val;
+        file_put_contents(self::JSON_FILE, json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     public function get($key){

@@ -4,9 +4,13 @@ namespace app\web;
 
 class Api{
     public function run(){
-        $apiPath = apiPath();
-        if(file_exists($apiPath)){
-            require $apiPath;
+        $api_path = api_path();
+        if(file_exists($api_path)){
+            try{
+                require $api_path;
+            }catch(\Exception $e){
+                $this->error($e->getmessage(), $e->getcode(), isset($e->data)?:null);
+            }
         }else{
             $this->error('没有找到指定的api');
         }
@@ -37,5 +41,23 @@ class Api{
     public function ret($data = []){
         header("Content-Type:application/json;charset=utf-8");
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function getParam($name, $defaultValue = -1, $evadeValue = ''){
+        if(isset($_REQUEST[$name])){
+            $val = $_REQUEST[$name];
+            if($val == $evadeValue)
+                return $defaultValue;
+            return $val;
+        }else{
+            return $defaultValue;
+        }
+    }
+
+    public function requiredParam($name){
+        if(isset($_REQUEST[$name])){
+            return $_REQUEST[$name];
+        }
+        throw new \Exception('参数'.$name.'缺失');
     }
 }

@@ -23,7 +23,7 @@ function first_missing_index($arr) : int{
  * @see \app\util\localize\LocalJson::set()
  */
 function conf($key, $val=null) : mixed{
-    if(isset($val)){
+    if(!isset($val)){
         return \app\util\localize\LocalJson::getInstance()->get($key);
     }else{
         return \app\util\localize\LocalJson::getInstance()->set($key, $val);

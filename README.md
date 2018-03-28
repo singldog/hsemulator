@@ -1,2 +1,2 @@
 # hsemulator
-a hearthstone emulator
+hsemulator

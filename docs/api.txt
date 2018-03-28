@@ -1,0 +1,10 @@
+登陆
+user/login
+username 用户名 必须
+password 密码 必须
+成功情况下data数据:
+{
+    "playerToken" : "d4c602315fe810cfd4" //16位token
+}
+失败情况下返回码：通用错误、其他错误待定
+

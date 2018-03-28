@@ -4,7 +4,10 @@ namespace app\game\basis;
 
 use app\game\render;
 
-class Card implements IRenderable{
+/**
+ * 卡牌类
+ */
+class Card implements IRenderable, IDatable{
 
     public function getRenderer() : IRenderer{
         

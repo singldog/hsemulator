@@ -2,9 +2,13 @@
 
 namespace app\util\localize;
 
+/**
+ * 使用json本地化数据
+ */
 class LocalJson implements ILocalize{
     use \app\util\traits\StaticInstanceTrait;
 
+    /** 本地文件地址 */
     public const JSON_FILE = "data/localized.json";
 
     public function set($key, $val){

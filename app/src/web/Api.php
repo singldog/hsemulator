@@ -77,7 +77,7 @@ class Api{
      * @param mixed $defaultValue 若没有传此参数时返回的默认值
      * @param mixed $evadeValue 用于规避参数默认值，例如空字符串，可视为未提供函数。未提供函数的情况下，返回默认值。
      */
-    public function getParam($name, $defaultValue = -1, $evadeValue = '') : mixed{
+    public function getParam($name, $defaultValue = -1, $evadeValue = ''){
         if(isset($_REQUEST[$name])){
             $val = $_REQUEST[$name];
             if($val == $evadeValue)
@@ -93,7 +93,7 @@ class Api{
      * 
      * @param string $name 参数名称
      */
-    public function requiredParam($name) : mixed{
+    public function requiredParam($name){
         if(isset($_REQUEST[$name])){
             return $_REQUEST[$name];
         }

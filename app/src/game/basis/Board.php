@@ -38,7 +38,7 @@ class Board implements IDatable{
     /**
      * 导出数据
      */
-    public function exportData() : mixed{
+    public function exportData(){
         $result = [];
         foreach($minionBases as $mb){
             $result[] = $mb->exportData();

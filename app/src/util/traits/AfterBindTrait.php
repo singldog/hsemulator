@@ -44,7 +44,7 @@ trait AfterBindTrait{
     /**
      * @param string $key 属性名称
      */
-    public function __get($key) : mixed{
+    public function __get($key){
         if(!array_key_exists($key, $this->afterBind)){
             throw new \Exception('调用了未绑定的属性');
         }

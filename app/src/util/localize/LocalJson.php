@@ -9,24 +9,26 @@ class LocalJson implements ILocalize{
     use \app\util\traits\StaticInstanceTrait;
 
     /** 本地文件地址 */
-    public const JSON_FILE = "data/localized.json";
+    public function jsonFile(){
+        return "data/".env()."/localized.json";
+    }
 
     public function set($key, $val){
-        $result = @file_get_contents(self::JSON_FILE);
+        $result = @file_get_contents($this->jsonFile());
         if($result === false){
             throw new \Exception('未找到指定的缓存文件', 12);
         }
         $data = json_decode($result);
         $data->$key = $val;
-        file_put_contents(self::JSON_FILE, json_encode($data, JSON_UNESCAPED_UNICODE));
+        file_put_contents($this->jsonFile(), json_encode($data, JSON_UNESCAPED_UNICODE));
     }
 
     public function get($key){
-        $result = @file_get_contents(self::JSON_FILE);
+        $result = @file_get_contents($this->jsonFile());
         if($result === false){
             throw new \Exception('未找到指定的缓存文件', 12);
         }
-        $data = json_decode(file_get_contents(self::JSON_FILE));
+        $data = json_decode(file_get_contents($this->jsonFile()));
         if(array_key_exists($key, $data)){
             return $data->$key;
         }

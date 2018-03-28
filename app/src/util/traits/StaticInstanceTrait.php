@@ -9,7 +9,6 @@ namespace app\util\traits;
  */
 trait StaticInstanceTrait
 {
-    private function __construct(){}
 
     /**
      * 静态对象

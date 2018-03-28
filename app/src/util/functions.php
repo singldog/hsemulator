@@ -109,3 +109,11 @@ function api_path() : string{
         )
     ).'.php';
 }
+
+function env(){
+    $env = getenv('HSE_ENV');
+    if(!$env){
+        $env = 'local';
+    }
+    return $env;
+}

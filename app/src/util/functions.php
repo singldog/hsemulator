@@ -21,17 +21,21 @@ function output_as_table($data){
         $data = [$data];
     }
     
-    echo '<pre><table style="font-size:18px;" border="1" cellspacing="0" cellpadding="4">';
-    foreach($data as $k=>$v){
-        echo '<tr><td>'.$k.'</td><td>';
-        if(is_array($v)||is_object($v)){
-            output_as_table($v);
-        }else{
-            echo $v;
+    if(count($data)){
+        echo '<pre><table style="font-size:18px;" border="1" cellspacing="0" cellpadding="4">';
+        foreach($data as $k=>$v){
+            echo '<tr><td>'.$k.'</td><td>';
+            if(is_array($v)||is_object($v)){
+                output_as_table($v);
+            }else{
+                echo $v;
+            }
+            echo '</td></tr>';
         }
-        echo '</td></tr>';
+        echo '</table></pre>';
+    }else{
+        var_dump($data);
     }
-    echo '</table></pre>';
 }
 
 function d($data){

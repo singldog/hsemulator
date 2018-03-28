@@ -8,6 +8,7 @@ class Api{
         if(file_exists($api_path)){
             try{
                 require $api_path;
+                $this->success();
             }catch(\Exception $e){
                 $this->error($e->getmessage(), $e->getcode(), isset($e->data)?:null);
             }

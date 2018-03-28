@@ -42,7 +42,7 @@ class GameMemoryShare{
     }
 
     public function saveGameHeaderInfo(){
-        $this->memoryShare->save($this->gameHeader, 0);
+        $this->memoryShare->save($this->gameHeader, 0, self::BLOCKSIZE_HEADER_INFO);
     }
 
     public function createGameBlock($gameData){
@@ -53,7 +53,7 @@ class GameMemoryShare{
         $gameToken = md5($id);
         $this->gameHeader['games'][$index] = $gameToken;
         $this->saveGameHeaderInfo();
-        $this->memoryShare->save($gameData, $this->gameOffset($index));
+        $this->memoryShare->save($gameData, $this->gameOffset($index), self::BLOCKSIZE_ONE_PLAY);
     }
 
     public function readGameData($gameToken){
@@ -67,7 +67,7 @@ class GameMemoryShare{
 
     public function saveGameData($gameToken, $gameData){
         $index = array_search($gameToken, $this->gameHeader['games']);
-        $this->memoryShare->save($gameData, $this->gameOffset($index));
+        $this->memoryShare->save($gameData, $this->gameOffset($index), self::BLOCKSIZE_ONE_PLAY);
     }
 
     public function gameOffset($index){

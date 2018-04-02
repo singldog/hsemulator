@@ -73,4 +73,9 @@ class GameMemoryShare{
     public function gameOffset($index){
         return self::BLOCKSIZE_HEADER_INFO + $index * self::BLOCKSIZE_ONE_PLAY;
     }
+
+    public function deleteAll(){
+        $this->gameHeader['players'] = [];
+        $this->saveGameHeaderInfo();
+    }
 }

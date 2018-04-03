@@ -16,6 +16,11 @@ class Board implements IDatable{
     public $minionBases = [];
 
     /**
+     * afterbind:
+     * public $player;
+     */
+
+    /**
      * 添加一个类随从（若已存在则不会添加）
      * 
      * @param MinionBase $mb 需要添加的类随从
@@ -31,7 +36,7 @@ class Board implements IDatable{
      * 
      * @param MinionBase $mb 需要删除的类随从
      */
-    public function removeMinionBase($mb) : void {
+    public function removeMinionBase(MinionBase $mb) : void {
         $this->minionBases = array_diff($this->minionBases, [$mb]);
     }
 

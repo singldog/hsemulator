@@ -9,7 +9,7 @@ class Api{
 
     /**
      * 调用接口以运行api程序
-     * 举例：访问url:http://域名/user/register，则访问src/api/user/register.php
+     * 举例：访问url:http://域名/user/register，则访问src/web/api/user/register.php
      * 所有分离的api文件都可以调用定义于Api类中的方法
      */
     public function run() : void{

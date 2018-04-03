@@ -7,7 +7,7 @@ use app\game\render;
 /**
  * 卡牌类
  */
-class Card extends GameObject implements IDatable{
+class Card extends GameObject{
     use \app\util\traits\AfterBindTrait;
 
     public $desc;

@@ -2,7 +2,7 @@
 
 namespace app\game\basis;
 
-class ManaCard extends Card{
+class ManaCard extends ManaCard{
 
     public $mana;
 

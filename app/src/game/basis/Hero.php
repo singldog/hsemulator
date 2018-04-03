@@ -11,7 +11,7 @@ class Hero extends Charactor{
     public $heroPower;
 
     public function __construct($name, $imgUri, $attack, $health, $heroPower){
-        parent::__construct($name, $imgUri);
+        parent::__construct($name, $imgUri, $attack, $health);
         $this->heroPower = $heroPower;
     }
     

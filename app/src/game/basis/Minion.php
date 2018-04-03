@@ -2,8 +2,6 @@
 
 namespace app\game\basis;
 
-use app\game\basis\IDatable;
-
 class Minion extends MinionBase{
 
     public $mana;
@@ -13,4 +11,5 @@ class Minion extends MinionBase{
         $this->mana = $mana;
     }
 
+    
 }

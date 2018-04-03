@@ -2,14 +2,12 @@
 
 namespace app\game\basis;
 
-use app\game\basis\IDatable;
-
 /**
  * 类随从
  * 
  * 随从的父类，也用于扩展或描述类似小鬼传送门的可在游戏中展现但无部分随从特征的类随从物体
  */
-class MinionBase extends Character implements IDatable{
+class MinionBase extends Character{
     use \app\util\traits\AfterBindTrait;
     
     /**
@@ -35,16 +33,6 @@ class MinionBase extends Character implements IDatable{
      */
     public function destroy(){
         $this->board->removeMinionBase($this);
-    }
-
-    /**
-     * 导出数据
-     */
-    public function exportData(){
-        return [
-            'name' => $this->name,
-            'imgUri' => $this->imgUri,
-        ];
     }
     
 }

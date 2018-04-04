@@ -5,7 +5,7 @@ namespace app\game\basis;
 /**
  * 玩家类
  */
-class Player{
+class Player implements IDatable{
     use \app\util\traits\AfterBindTrait;
 
     public $name;
@@ -55,6 +55,19 @@ class Player{
         $card = $this->deck->cards[$index];
         $this->hand->addCard($card);
         $this->deck->removeCard($card);
+    }
+
+    public function exportData(){
+        return [
+            'name' => $this->name,
+            'hero' => $this->hero->exportData(),
+            'board' => $this->board->exportData(),
+            'hand' => $this->hand->exportData(),
+            'deck' => $this->deck->exportData(),
+            'mana' => $this->mana,
+            'manaMax' => $this->manaMax,
+            'inTurn' => $this->inTurn
+        ];
     }
     
 }

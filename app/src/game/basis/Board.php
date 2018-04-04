@@ -45,12 +45,10 @@ class Board implements IDatable{
      */
     public function exportData(){
         $result = [];
-        foreach($minionBases as $mb){
+        foreach($this->minionBases as $mb){
             $result[] = $mb->exportData();
         }
         return $result;
     }
-
-
 
 }

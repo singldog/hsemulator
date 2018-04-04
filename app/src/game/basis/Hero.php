@@ -5,7 +5,8 @@ namespace app\game\basis;
 /**
  * 英雄类
  */
-class Hero extends Charactor{
+class Hero extends Character{
+    use \app\util\traits\AfterBindTrait;
 
     /** 技能 */
     public $heroPower;
@@ -19,7 +20,7 @@ class Hero extends Charactor{
         return array_merge(
             parent::exportData(),
             [ 
-                'heroPower' => $this->heroPower->exportData(),
+                //'heroPower' => $this->heroPower->exportData(),
             ]
         );
     }

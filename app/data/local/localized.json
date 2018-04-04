@@ -1,5 +1,5 @@
 {
     "dirSeperator": "/",
     "memoryBlockOpened": true,
-    "assetHost": "http://local-asset.hsemulator.com"
+    "assetHost": "http://local-asset.hsemulator.com/"
 }

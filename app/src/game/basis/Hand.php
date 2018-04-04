@@ -43,7 +43,7 @@ class Hand implements IDatable{
      */
     public function exportData(){
         $result = [];
-        foreach($cards as $card){
+        foreach($this->cards as $card){
             $result[] = $card->exportData();
         }
         return $result;

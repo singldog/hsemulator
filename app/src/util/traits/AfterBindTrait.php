@@ -60,7 +60,8 @@ trait AfterBindTrait{
      */
     public function __get($key){
         if(!array_key_exists($key, $this->afterBind)){
-            throw new \Exception('调用了未绑定的属性');
+            //throw new \Exception('调用了未绑定的属性');
+            return;
         }
         $val = $this->afterBind[$key];
         if(count($val)==1){

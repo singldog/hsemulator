@@ -40,4 +40,13 @@ class Deck implements IDatable{
     public function removeCard(Card $card) : void {
         $this->cards = array_diff($this->cards, [$card]);
     }
+
+    /**
+     * 导出数据
+     */
+    public function exportData(){
+        return [
+            'cardRemain' => count($this->cards)
+        ];
+    }
 }

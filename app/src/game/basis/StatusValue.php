@@ -5,7 +5,7 @@ namespace app\game\basis;
 /**
  * 状态数值
  */
-class StatusValue{
+class StatusValue implements IDatable{
 
     public $val;
     public $standardVal;
@@ -21,4 +21,11 @@ class StatusValue{
     public const STATUS_RED = -1;
     public const STATUS_GREEN = 1;
 
+    public function exportData(){
+        return [
+            'val' => $this->val,
+            'standardVal' => $this->standardVal,
+            'status' => $this->status,
+        ];
+    }
 }

@@ -19,13 +19,18 @@ class MinionBase extends Character{
      */
     public $name;
     /**
+     * 卡牌
+     */
+    public $card;
+    /**
      * afterbind:
      * public $board;
      */
 
-    public function __construct($name, $imgUri){
+    public function __construct($name, $imgUri, $card){
         $this->name = $name;
         $this->imgUri = $imgUri;
+        $this->card = $card;
     }
 
     /**

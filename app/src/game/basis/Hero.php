@@ -15,5 +15,13 @@ class Hero extends Charactor{
         $this->heroPower = $heroPower;
     }
     
+    public function exportData(){
+        return array_merge(
+            parent::exportData(),
+            [ 
+                'heroPower' => $this->heroPower->exportData(),
+            ]
+        );
+    }
 
 }

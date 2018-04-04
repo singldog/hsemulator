@@ -7,3 +7,4 @@
  */
 
 require 'src/util/functions.php';
+require 'src/util/game_utils.php';

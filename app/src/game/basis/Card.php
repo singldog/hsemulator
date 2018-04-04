@@ -27,11 +27,10 @@ class Card extends GameObject{
     }
 
     public function exportData(){
-        return [
-            'name' => $this->name,
-            'desc' => $this->desc,
-            'imgUri' => $this->imgUri,
-        ];
+        return array_merge(
+            parent::exportData(),
+            [ 'desc' => $this->desc ]
+        );
     }
 
 }

@@ -13,5 +13,15 @@ class Character extends GameObject{
         $this->health = $health;
     }
 
+    public function exportData(){
+        return array_merge(
+            parent::exportData(),
+            [ 
+                'attack' => $this->attack->exportData(),
+                'health' => $this->health->exportData(),
+            ]
+        );
+    }
+
 }
 

@@ -7,7 +7,7 @@ namespace app\util\traits;
  * 即：创建一个随从后为其绑定至board
  */
 trait AfterBindTrait{
-
+    
     /**
      * 用于保存绑定的数据
      */

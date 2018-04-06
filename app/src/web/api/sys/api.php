@@ -1,7 +1,6 @@
 <?php
 
 $apiDir = $_SERVER["DOCUMENT_ROOT"]."/src/web/api/";
-
 $apis = [];
 
 foreach(scandir($apiDir) as $group){
@@ -17,7 +16,7 @@ foreach(scandir($apiDir) as $group){
             "url" => $url
         ];
         foreach($attrs as $attr){
-            $aa = explode(" ", $a);
+            $aa = explode(" ", $attr);
             if(count($aa)==2){
                 if(array_key_exists($aa[0], $obj)){
                     if(is_array($obj[$aa[0]])){

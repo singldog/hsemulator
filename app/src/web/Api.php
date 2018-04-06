@@ -100,4 +100,6 @@ class Api{
         }
         throw new \Exception('参数'.$name.'缺失');
     }
+
+    
 }

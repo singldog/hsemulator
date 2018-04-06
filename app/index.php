@@ -10,7 +10,6 @@ require 'includes.php';
 //允许跨域
 header("Access-Control-Allow-Origin:*");
 header("Access-Control-Allow-Methods:GET,POST");
-header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
 //运行api
 (new \app\web\Api)->run();

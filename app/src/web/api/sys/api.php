@@ -20,15 +20,31 @@ foreach(scandir($apiDir) as $group){
         $obj = [
             "url" => $url
         ];
+        $record = [];
         foreach($attrs as $attr){
-            $aa = explode(" ", $attr, 2);
-            if(count($aa)==2){
-                $aaContent = explode(" ", $aa[1]);
-                if(count($aaContent)==2){
-                    $aa[1] = [$aaContent];
-                }
-                $obj[$aa[0]] = array_merge(@$obj[$aa[0]]??[], [$aa[1]]);
+            $attr = explode(" ", $attr, 2);
+            $attrName = $attr[0];
+            $attrValue = $attr[1];
+            $attrValueArr = explode(" ", $attrValue);
+            
+            if(count($attrValueArr)>1){
+                $attrValue = $attrValueArr;
             }
+
+            if(@$record[$attrName]){
+                if($record[$attrName] == 1){
+                    $obj[$attrName] = array_merge([$obj[$attrName]], [$attrValue]);
+                }else{
+                    $obj[$attrName] = array_merge($obj[$attrName], [$attrValue]);
+                }
+            }else{
+                $obj[$attrName] = $attrValue;
+            }
+
+            if(!array_key_exists($attrName, $record)){
+                $record[$attrName]=0;
+            }
+            $record[$attrName]++;
         }
         $apis[$group][] = $obj;
     }

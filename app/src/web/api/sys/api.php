@@ -11,7 +11,7 @@ foreach(scandir($apiDir) as $group){
         if($api == "." || $api == "..") continue;
         $url = $apiDir."/".$group."/".$api;
         $file = file_get_contents($url);
-        $attrs = @explode("\r\n * @", explode("\r\n */", explode("/**\r\n * @", $file)[1])[0]);
+        $attrs = @explode(conf('lineBreaker')." * @", explode(conf('lineBreaker')." */", explode("/**".conf('lineBreaker')." * @", $file)[1])[0]);
         $url = $group."/".str_replace(".php", "", $api);
         $obj = [
             "url" => $url

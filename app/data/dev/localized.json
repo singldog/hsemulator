@@ -2,5 +2,5 @@
     "dirSeperator":"/",
     "memoryBlockOpened":true,
     "assetHost": "http://local-asset.hsemulator.com/",
-    "lineBreak":"\n"
+    "lineBreaker":"\n"
 }

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @name 4月4日总体测试
+ */
+
 $elv = new \app\data\cards\Elven_archer;
 $deck = new \app\game\basis\Deck;
 $deck->addCard($elv);

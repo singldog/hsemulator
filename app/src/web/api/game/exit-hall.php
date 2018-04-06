@@ -3,8 +3,7 @@
 /**
  * @name 玩家退出大厅
  * @desc 从内存头信息中移除玩家token
- * @param token 玩家令牌
- * @param test 玩家令牌
+ * @param playerToken 玩家令牌
  */
 
 $token = $this->requiredParam('playerToken');

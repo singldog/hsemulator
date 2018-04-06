@@ -34,4 +34,4 @@ foreach(scandir($apiDir) as $group){
     }
 }
 
-dd($apis);
+return $this->success($apis);

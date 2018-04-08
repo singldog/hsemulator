@@ -14,7 +14,6 @@ var app = new Vue({
                     if(this.items[item][i].param){
                         for(var j=0;j<this.items[item][i].param.length;j++){
                             this.items[item][i].param[j].val=null;
-                            console.log(this.items[item][i].param[j].val);
                         }
                     }
                 }
@@ -30,7 +29,6 @@ var app = new Vue({
                 for(var i=0;i<this.items[item].length;i++){
                     if(this.items[item][i].param){
                         for(var j=0;j<this.items[item][i].param.length;j++){
-                            this.items[item][i].param[j].val=null;
                             console.log(this.items[item][i].param[j].val);
                         }
                     }

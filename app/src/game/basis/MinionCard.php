@@ -22,7 +22,7 @@ class MinionCard extends ManaCard{
 
     public function spawnMinion(){
         $minion = $this->minionConstructor->construct($this);
-        $this->hand->player->board->addMinion($minion);
+        $this->hand->player->board->addMinionBase($minion);
     }
 
     public function exportData(){

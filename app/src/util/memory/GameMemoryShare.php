@@ -37,6 +37,10 @@ class GameMemoryShare{
         $this->saveGameHeaderInfo();
     }
 
+    public function getPlayerTokens(){
+        return $this->gameHeader['players'];
+    }
+
     public function getGameIndex($gameToken){
         return array_search($gameToken, $this->gameHeader);
     }

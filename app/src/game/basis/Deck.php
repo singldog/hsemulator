@@ -29,6 +29,7 @@ class Deck implements IDatable{
     public function addCard(Card $card) : void {
         if(!in_array($card, $this->cards, true)){
             $this->cards[] = $card;
+            $card->bindDeck($this);
         }
     }
 
@@ -39,6 +40,12 @@ class Deck implements IDatable{
      */
     public function removeCard(Card $card) : void {
         array_splice($this->cards, array_search($card, $this->cards, true), 1);
+        $card->unbindDeck($this);
+    }
+
+    public function randCard($num){
+        $num = min($num, count($this->cards));
+        
     }
 
     /**

@@ -6,10 +6,26 @@
  * @param array $arr 需要寻找的数组
  */
 function first_missing_index($arr) : int{
-    for($i = 0; $i<count($arr); $i++){
+    for($i = 0; $i<=count($arr); $i++){
         if(!array_key_exists($i, $arr)){
             return $i;
         }
+    }
+}
+
+function array_rand_elem($array, $num=1){
+    $randKey = array_rand($array, $num);
+    if($num==1){
+        $randKey = [$randKey];
+    }
+    $result = [];
+    foreach($randKey as $key){
+        $result[$key] = $array[$key];
+    }
+    if(count($result==1)){
+        return $result[$key];
+    }else{
+        return $result;
     }
 }
 
@@ -117,3 +133,4 @@ function env(){
     }
     return $env;
 }
+

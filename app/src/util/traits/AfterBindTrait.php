@@ -47,8 +47,8 @@ trait AfterBindTrait{
             $name = lcfirst($name);
             $this->afterBindData($name, $arguments[0]);
             return;
-        }else if(strpos($name, "remove")===0){
-            $name = str_replace('bind', '', $name);
+        }else if(strpos($name, "unbind")===0){
+            $name = str_replace('unbind', '', $name);
             $name = lcfirst($name);
             $this->removeBindData($name);
             return;

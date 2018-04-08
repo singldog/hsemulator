@@ -16,6 +16,7 @@ class Player implements IDatable{
     public $mana = 0;
     public $manaMax = 1;
     public $inTurn = false;
+    public $initCards;
 
     public const MAX_MANA = 10;
 
@@ -30,6 +31,10 @@ class Player implements IDatable{
         $this->board = $board;
         $this->hand = $hand;
         $this->deck = $deck;
+
+        $hero->bindPlayer($this);
+        $board->bindPlayer($this);
+        $deck->bindPlayer($this);
     }
 
     public function refillMana(){
@@ -50,11 +55,33 @@ class Player implements IDatable{
         $this->mana -= $manaCost;
     }
 
-    public function drawACard(){
-        $index = array_rand($this->deck->cards);
-        $card = $this->deck->cards[$index];
+    public function initByGame($firstHand){
+        $this->randInitCards($firstHand);
+    }
+
+    public function randInitCards($firstHand){
+        $cardNum = $firstHand?3:4;
+        $this->initCards = array_rand_elem($this->deck->cards, $cardNum);
+    }
+
+    public function drawInitCards(){
+        $this->drawCards($this->initCards);
+    }
+
+    public function drawARandomCard(){
+        $card = array_rand_elem($this->deck->cards);
+        $this->drawCard($card);
+    }
+
+    public function drawCard($card){
         $this->hand->addCard($card);
         $this->deck->removeCard($card);
+    }
+
+    public function drawCards($cards){
+        foreach($cards as $card){
+            $this->drawCard($card);
+        }
     }
 
     public function exportData(){
@@ -66,7 +93,8 @@ class Player implements IDatable{
             'deck' => $this->deck->exportData(),
             'mana' => $this->mana,
             'manaMax' => $this->manaMax,
-            'inTurn' => $this->inTurn
+            'inTurn' => $this->inTurn,
+            'initCards' => $this->initCards
         ];
     }
     

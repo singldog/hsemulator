@@ -28,6 +28,7 @@ class Board implements IDatable{
     public function addMinionBase(MinionBase $mb) : void {
         if(!in_array($mb, $this->minionBases, true)){
             $this->minionBases[] = $mb;
+            $mb->bindBoard($this);
         }
     }
 
@@ -38,6 +39,7 @@ class Board implements IDatable{
      */
     public function removeMinionBase(MinionBase $mb) : void {
         $this->minionBases = array_diff($this->minionBases, [$mb]);
+        $mb->unbindBoard($this);
     }
 
     /**

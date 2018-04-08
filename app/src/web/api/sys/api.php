@@ -42,19 +42,16 @@ foreach(scandir($apiDir) as $group){
             $attrValue = $attr[1];
             $attrValueArrTemp = explode(" ", $attrValue);
             $attrValueArr = [];
-
             foreach($attrValueArrTemp as $val){
                 $innerPair = explode(':', $val);
                 if(count($innerPair) == 2){
-                    try{
-                        $attrValueArr[$innerPair[0]] = json_decode($innerPair[1])??$innerPair[1];
-                    }catch(\Exception $e){
-                        $attrValueArr[$innerPair[0]] = $innerPair[1];
-                    }
+                    $attrValueArr[$innerPair[0]] = json_decode($innerPair[1])??$innerPair[1];
+                }else{
+                    $attrValueArr = json_decode($innerPair[0])??$innerPair[0];
                 }
             }
             
-            if(count($attrValueArr)>1){
+            if(count($attrValueArr)>0){
                 $attrValue = $attrValueArr;
             }
 

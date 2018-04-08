@@ -26,6 +26,7 @@ class Hand implements IDatable{
     public function addCard(Card $card) : void {
         if(!in_array($card, $this->cards, true)){
             $this->cards[] = $card;
+            $card->bindHand($this);
         }
     }
 

@@ -13,12 +13,14 @@ foreach(scandir($apiDir) as $group){
     $apis[$group] = [];
     foreach(scandir($apiDir.$group) as $api){
         if($api == "." || $api == "..") continue;
-        $url = $apiDir."/".$group."/".$api;
-        $file = file_get_contents($url);
+        $fileUrl = $apiDir."/".$group."/".$api;
+        $file = file_get_contents($fileUrl);
         $attrs = @array_filter(explode(conf('lineBreaker')." * @", explode(conf('lineBreaker')." */", explode("/**".conf('lineBreaker')." * @", $file)[1])[0]));
         $url = $group."/".str_replace(".php", "", $api);
         $obj = [
-            "url" => $url
+            "url" => $url,
+            "createTime" => filectime($fileUrl),
+            "modifyTime" => filemtime($fileUrl),
         ];
         $record = [];
         foreach($attrs as $attr){
@@ -33,12 +35,20 @@ foreach(scandir($apiDir) as $group){
 
             if(@$record[$attrName]){
                 if($record[$attrName] == 1){
-                    $obj[$attrName] = array_merge([$obj[$attrName]], [$attrValue]);
+                    if($attrName=="param"){
+                        $obj[$attrName] = array_merge($obj[$attrName], [$attrValue]);
+                    }else{
+                        $obj[$attrName] = array_merge([$obj[$attrName]], [$attrValue]);
+                    }
                 }else{
                     $obj[$attrName] = array_merge($obj[$attrName], [$attrValue]);
                 }
             }else{
-                $obj[$attrName] = $attrValue;
+                if($attrName=="param"){
+                    $obj[$attrName] = [$attrValue];
+                }else{
+                    $obj[$attrName] = $attrValue;
+                }
             }
 
             if(!array_key_exists($attrName, $record)){

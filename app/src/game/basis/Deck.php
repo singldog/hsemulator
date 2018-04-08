@@ -27,7 +27,7 @@ class Deck implements IDatable{
      * @param Card $card 牌
      */
     public function addCard(Card $card) : void {
-        if(!in_array($card, $this->cards)){
+        if(!in_array($card, $this->cards, true)){
             $this->cards[] = $card;
         }
     }
@@ -38,7 +38,7 @@ class Deck implements IDatable{
      * @param Card $card 牌
      */
     public function removeCard(Card $card) : void {
-        $this->cards = array_diff($this->cards, [$card]);
+        array_splice($this->cards, array_search($card, $this->cards, true), 1);
     }
 
     /**

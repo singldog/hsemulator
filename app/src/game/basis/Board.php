@@ -26,7 +26,7 @@ class Board implements IDatable{
      * @param MinionBase $mb 需要添加的类随从
      */
     public function addMinionBase(MinionBase $mb) : void {
-        if(!in_array($mb, $this->minionBases)){
+        if(!in_array($mb, $this->minionBases, true)){
             $this->minionBases[] = $mb;
         }
     }

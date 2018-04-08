@@ -24,7 +24,7 @@ class Hand implements IDatable{
      * @param Card $card 牌
      */
     public function addCard(Card $card) : void {
-        if(!in_array($card, $this->cards)){
+        if(!in_array($card, $this->cards, true)){
             $this->cards[] = $card;
         }
     }

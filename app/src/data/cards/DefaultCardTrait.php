@@ -18,6 +18,9 @@ trait DefaultCardTrait{
 
     public function constructMinion($card){
         $minion = new Minion($card->name, $card->imgUri, v($card->attack), v($card->health), v($card->mana));
+        if($this->processMinion){
+            $this->processMinion($minion);
+        }
     }
 
 }

@@ -3,8 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+<div id="container">
+    <div class="left">
+        <ul v-for="group in items">
+            <li v-for="item in group" @click="viewItem(item)"> {{ item.name }} <strong>{{ item.url }}</strong></li>
+        </ul>
+    </div>
+    <div class="middle">
+        <ul v-if="currentItem">
+            <li> {{ currentItem.desc }}</li>
+            <li v-for="num in currentItem.param">
+                {{num.name}}<input v-model="num.val"    type="text">{{num.val}}
+            </li>
+            <li v-for="num in currentItem.param" class="params">
+                ({{num.desc}})
+            </li>
+            <li><input @click="simulation()" type="button" id="submit" value="模拟请求"></li>
+        </ul>
+    </div>
+    <div class="right">
 
+    </div>
+</div>
+<script src="js/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+li{
+    cursor:pointer;
+}
+.left{
+    width:300px;
+}
+.middle{
+    width:calc(50% - 150px);
+}
+.right{
+    width:calc(50% - 150px);
+}
+#container>*{
+    float:left;
+}
+.middle li{
+    list-style: none;
+}

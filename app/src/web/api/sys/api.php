@@ -4,11 +4,17 @@
  * @name 获取所有系统api
  * @desc 分组将所有api信息返回，api信息从文件注释中读取
  * 
+ * $param name:requireRedundant type:int valueAllowed:[0,1] default:0 required:false desc:是否获取非必要信息，传1可获取全部，例如createTime，modifyTime
+ * 
  * $log date:4/8 logText:修改标记，现在使用$标记拥有多个值的项
+ * $log date:4/8 logText:修改sys/api返回结构,文档多值项现在可指定二级键名
+ * $log date:4/8 logText:添加requireRedundant参数，
  */
 
 $apiDir = $_SERVER["DOCUMENT_ROOT"]."/src/web/api/";
 $apis = [];
+
+$requireRedundant = $this->getParam('requireRedundant', 0);
 
 foreach(scandir($apiDir) as $group){
     if($group == "." || $group == "..") continue;
@@ -20,10 +26,12 @@ foreach(scandir($apiDir) as $group){
         $attrs = @array_filter(explode(conf('lineBreaker')." * ", explode(conf('lineBreaker')." */", explode("/**".conf('lineBreaker')." * ", $file)[1])[0]));
         $url = $group."/".str_replace(".php", "", $api);
         $obj = [
-            "url" => $url,
-            "createTime" => filectime($fileUrl),
-            "modifyTime" => filemtime($fileUrl),
+            "url" => $url
         ];
+        if($requireRedundant){
+            $obj['createTime'] = filectime($fileUrl);
+            $obj['modifyTime'] = filemtime($fileUrl);
+        }
         $record = [];
         foreach($attrs as $attr){
             $attr = explode(" ", $attr, 2);
@@ -37,7 +45,11 @@ foreach(scandir($apiDir) as $group){
             foreach($attrValueArrTemp as $val){
                 $innerPair = explode(':', $val);
                 if(count($innerPair) == 2){
-                    $attrValueArr[$innerPair[0]] = $innerPair[1];
+                    try{
+                        $attrValueArr[$innerPair[0]] = json_decode($innerPair[1])??$innerPair[1];
+                    }catch(\Exception $e){
+                        $attrValueArr[$innerPair[0]] = $innerPair[1];
+                    }
                 }
             }
             

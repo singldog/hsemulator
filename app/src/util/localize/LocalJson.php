@@ -28,11 +28,11 @@ class LocalJson implements ILocalize{
         if($result === false){
             throw new \Exception('未找到指定的缓存文件', 12);
         }
-        $data = json_decode(file_get_contents($this->jsonFile()));
+        $data = json_decode(file_get_contents($this->jsonFile()))??[];
         if(array_key_exists($key, $data)){
             return $data->$key;
         }
-        throw new Exception('未找到指定的缓存数据', 12);
+        throw new \Exception('未找到指定的缓存数据', 12);
     }
 
 }

@@ -6,10 +6,10 @@
  * 
  * $param name:requireRedundant type:int valueAllowed:[0,1] default:0 required:false desc:是否获取非必要信息，传1可获取全部，例如createTime，modifyTime
  * 
- * $log date:4/8 logText:修改标记，现在使用$标记拥有多个值的项
- * $log date:4/8 logText:修改sys/api返回结构,文档多值项现在可指定二级键名
- * $log date:4/8 logText:添加requireRedundant参数
- * $log date:4/8 logText:完善了二级值解析，现在支持json格式数据
+ * $log date:4/8 text:修改标记，现在使用$标记拥有多个值的项
+ * $log date:4/8 text:修改sys/api返回结构,文档多值项现在可指定二级键名
+ * $log date:4/8 text:添加requireRedundant参数
+ * $log date:4/8 text:完善了二级值解析，现在支持json格式数据
  */
 
 $apiDir = $_SERVER["DOCUMENT_ROOT"]."/src/web/api/";

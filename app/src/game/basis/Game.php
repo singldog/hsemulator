@@ -12,10 +12,10 @@ class Game implements IDatable{
     public function addPlayer($player){
         if(!$this->player1){
             $this->player1 = $player;
-            $player->bindGame($this);
+            $player->game = $this;
         }else if(!$this->player2){
             $this->player2 = $player;
-            $player->bindGame($this);
+            $player->game = $this;
             $this->start();
         }else{
             throw new Exception('游戏人数已满');

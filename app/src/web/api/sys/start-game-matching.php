@@ -8,14 +8,14 @@
  * $seealso api:sys/end-game-matching why:若要关闭此进程，请调用该接口
  */
 
-$started = conf('gameMatchThread');
+$started = data('gameMatchThread');
 $autoCall = $this->getParam('autoCall', 0, '');
 
 if($started===false){
     if($autoCall){
         return;
     }else{
-        conf('gameMatchThread', true);
+        data('gameMatchThread', true);
     }
 }else{
     if(!$autoCall){

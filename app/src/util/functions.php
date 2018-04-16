@@ -30,7 +30,7 @@ function array_rand_elem($array, $num=1){
 }
 
 /**
- * 读取或写入配置文件中的值
+ * 读取或写入json文件中的值
  * 
  * @param string $key 键
  * @param string $val 值，若传入则代表写入数据，不可为null
@@ -38,12 +38,30 @@ function array_rand_elem($array, $num=1){
  * @see \app\util\localize\LocalJson::get()
  * @see \app\util\localize\LocalJson::set()
  */
-function conf($key, $val=null){
+function data($key, $val=null){
     if(!isset($val)){
         return \app\util\localize\LocalJson::getInstance()->get($key);
     }else{
         return \app\util\localize\LocalJson::getInstance()->set($key, $val);
     }
+}
+
+
+/**
+ * 读取配置文件的值
+ * 
+ * @param string $key 键
+ * @param array $levels 前面的层级键
+ */
+function conf($key, ...$levels){
+    $newLevels = array_merge($levels, [$key]);
+    $i = 0;
+    $result = CONFIG;
+    while($i<count($newLevels) && array_key_exists($newLevels[$i], $result)){
+        $result = $result[$newLevels[$i]];
+        $i++;
+    };
+    return $result;
 }
 
 /**
@@ -56,21 +74,30 @@ function output_as_table($data) : void{
         $data = [$data];
     }
     
-    if(count($data)){
-        echo '<pre><table style="font-size:18px;" border="1" cellspacing="0" cellpadding="4">';
-        foreach($data as $k=>$v){
-            echo '<tr><td>'.$k.'</td><td>';
-            if(is_array($v)||is_object($v)){
-                output_as_table($v);
-            }else{
-                echo $v;
+    echo '<pre>';
+    //if(is_array($data)){
+        if(count($data)){
+            echo '<table style="font-size:18px;" border="1" cellspacing="0" cellpadding="4">';
+            foreach($data as $k=>$v){
+                echo '<tr><td> '.$k.' </td><td>';
+                if(is_array($v)||is_object($v)){
+                    output_as_table($v);
+                }else{
+                    echo $v;
+                }
+                echo '</td></tr>';
             }
-            echo '</td></tr>';
+            echo '</table>';
+        }else{
+            var_dump($data);
         }
-        echo '</table></pre>';
-    }else{
-        var_dump($data);
-    }
+    /* }else{
+        echo get_class($data);
+        if(is_object($data) && method_exists($data, 'exportData')){
+            output_as_table($data->exportData());
+        }
+    } */
+    echo '</pre>';
 }
 
 /**
@@ -78,8 +105,12 @@ function output_as_table($data) : void{
  * 
  * @see output_as_table() 原始方法
  */
-function d($data) : void{
-    output_as_table($data);
+function d(...$data) : void{
+    if(count($data)==1){
+        output_as_table($data[0]);
+    }else{
+        output_as_table($data);
+    }
 }
 
 /**
@@ -88,8 +119,12 @@ function d($data) : void{
  * @see d() 原始方法
  * @see die() 退出程序
  */
-function dd($data) : void{
-    output_as_table($data);
+function dd(...$data) : void{
+    if(count($data)==1){
+        output_as_table($data[0]);
+    }else{
+        output_as_table($data);
+    }
     die();
 }
 
@@ -124,6 +159,10 @@ function api_path() : string{
             $uri
         )
     ).'.php';
+}
+
+function mongo(){
+    return \app\util\db\MongoBowl::getInstance()->mongo;
 }
 
 function env(){

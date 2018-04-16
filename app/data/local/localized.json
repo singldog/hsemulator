@@ -1,7 +1,4 @@
 {
-    "dirSeperator":"/",
     "memoryBlockOpened":true,
-    "assetHost": "http://local-asset.hsemulator.com/",
-    "lineBreaker":"\r\n",
     "gameMatchThread":false
 }

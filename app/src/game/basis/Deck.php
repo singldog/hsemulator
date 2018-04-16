@@ -15,10 +15,7 @@ class Deck implements IDatable{
      */
     public $cards = [];
 
-    /**
-     * afterbind:
-     * public $player;
-     */
+    public $player;
     
 
     /**
@@ -29,7 +26,7 @@ class Deck implements IDatable{
     public function addCard(Card $card) : void {
         if(!in_array($card, $this->cards, true)){
             $this->cards[] = $card;
-            $card->bindDeck($this);
+            $card->deck = $this;
         }
     }
 
@@ -40,7 +37,7 @@ class Deck implements IDatable{
      */
     public function removeCard(Card $card) : void {
         array_splice($this->cards, array_search($card, $this->cards, true), 1);
-        $card->unbindDeck($this);
+        $card->deck = null;
     }
 
     public function randCard($num){

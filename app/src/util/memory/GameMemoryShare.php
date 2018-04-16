@@ -14,9 +14,9 @@ class GameMemoryShare{
 
     public function __construct(){
         $this->memoryShare = MemoryShare::getInstance();
-        $isFirstTime = !conf('memoryBlockOpened');
+        $isFirstTime = !data('memoryBlockOpened');
         if($isFirstTime){
-            conf('memoryBlockOpened', true);
+            data('memoryBlockOpened', true);
         }
         $this->memoryShare->open(ftok(__FILE__, 'h'), self::BLOCKSIZE_WHOLE_APP, $isFirstTime);
         $this->gameHeader = $this->memoryShare->read(0, self::BLOCKSIZE_HEADER_INFO);

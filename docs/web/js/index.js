@@ -5,13 +5,14 @@ var app = new Vue({
         message:null,
         currentItem:null,
         items:{},
-        result:{}
+        result:{},
     },
     created:function () {
         this.$http.get('http://47.94.15.53:8010/sys/api').then(function (res) {
             this.items = res.body.data;
             for(var item in this.items){
                 for(var i=0;i<this.items[item].length;i++){
+                    this.items[item][i].res=null;
                     if(this.items[item][i].param){
                         for(var j=0;j<this.items[item][i].param.length;j++){
                             this.items[item][i].param[j].val=null;
@@ -19,7 +20,7 @@ var app = new Vue({
                     }
                 }
             }
-            console.log(this.items);
+            console.log(this.lists);
         })
     },
     methods:{
@@ -40,8 +41,17 @@ var app = new Vue({
             sim.$http.get(get_url).then(function (res) {
                 var body_text = res.bodyText;
                 body_text = body_text.replace(/\,/g,'\n');
-                sim.res_message = body_text;
+                Vue.set(item, 'res', body_text);
+                this.$forceUpdate();
+                console.log(item.res);
             })
+        },
+        open () {
+            this.dialog = true
+        },
+        close () {
+            this.dialog = false
         }
     }
 });
+

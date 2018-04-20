@@ -1,12 +1,19 @@
 #container{
     position:relative;
 }
+.left ul{
+    padding:0px;
+}
 .left li{
+    width:100%;
+    padding-left:10px;
     cursor:pointer;
 }
 .left{
     position:fixed;
-    top:0px;
+    top:0;
+    overflow: scroll;
+    height:960px;
     width:300px;
 }
 .middle{
@@ -27,13 +34,33 @@
 #container>*{
     float:left;
 }
-.middle li{
+li{
     list-style: none;
 }
 .item_block{
-    margin-top:30px;
+    margin-bottom:50px;
 }
 a{
     color:black;
     text-decoration: none;
+}
+.item_block li{
+    line-height:30px;
+}
+.res{
+    height:100px;
+    width:100%;
+}
+.item_button{
+    margin:15px;
+}
+.middle li{
+    margin:5px 0px;
+}
+.left ul{
+    margin:0px;
+}
+.item_list{
+    font-weight: bold;
+    font-size:18px;
 }

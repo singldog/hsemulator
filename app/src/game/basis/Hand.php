@@ -13,10 +13,7 @@ class Hand implements IDatable{
      */
     public $cards = [];
 
-    /**
-     * afterbind:
-     * public $player;
-     */
+    public $player;
 
     /**
      * 添加手牌
@@ -26,7 +23,7 @@ class Hand implements IDatable{
     public function addCard(Card $card) : void {
         if(!in_array($card, $this->cards, true)){
             $this->cards[] = $card;
-            $card->bindHand($this);
+            $card->hand = $this;
         }
     }
 

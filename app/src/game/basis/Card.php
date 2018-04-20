@@ -12,10 +12,7 @@ class Card extends GameObject{
 
     public $desc;
 
-    /**
-     * afterbind:
-     * public $hand;
-     */
+    public $hand;
 
     public function __construct($name, $imgUri, $desc){
         parent::__construct($name, $imgUri);

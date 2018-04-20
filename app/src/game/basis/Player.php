@@ -20,10 +20,7 @@ class Player implements IDatable{
 
     public const MAX_MANA = 10;
 
-    /**
-     * afterbind:
-     * public $game;
-     */
+    public $game;
     
     public function __construct($name, $hero, $board, $hand, $deck){
         $this->name = $name;
@@ -32,9 +29,9 @@ class Player implements IDatable{
         $this->hand = $hand;
         $this->deck = $deck;
 
-        $hero->bindPlayer($this);
-        $board->bindPlayer($this);
-        $deck->bindPlayer($this);
+        $hero->player = $this;
+        $board->player = $this;
+        $deck->player = $this;
     }
 
     public function refillMana(){

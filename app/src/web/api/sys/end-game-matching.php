@@ -7,4 +7,4 @@
  * $seealso api:sys/start-game-matching why:开启进程的操作由该接口发起。
  */
 
-conf('gameMatchThread', false);
+data('gameMatchThread', false);

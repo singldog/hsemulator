@@ -3,22 +3,19 @@
 namespace app\game\basis;
 
 use app\game\basis\MinionBase;
+use app\util\IDatable;
 
 /**
  * 某一方玩家的场面（随从合集）
  */
 class Board implements IDatable{
-    use \app\util\traits\AfterBindTrait;
     
     /**
      * 该玩家的所有随从
      */
     public $minionBases = [];
 
-    /**
-     * afterbind:
-     * public $player;
-     */
+    public $player;
 
     /**
      * 添加一个类随从（若已存在则不会添加）
@@ -28,7 +25,7 @@ class Board implements IDatable{
     public function addMinionBase(MinionBase $mb) : void {
         if(!in_array($mb, $this->minionBases, true)){
             $this->minionBases[] = $mb;
-            $mb->bindBoard($this);
+            $mb->$board = $this;
         }
     }
 
@@ -39,7 +36,7 @@ class Board implements IDatable{
      */
     public function removeMinionBase(MinionBase $mb) : void {
         $this->minionBases = array_diff($this->minionBases, [$mb]);
-        $mb->unbindBoard($this);
+        $mb->$board = null;
     }
 
     /**

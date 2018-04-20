@@ -13,7 +13,7 @@ use \app\db\Player;
 $username = $this->requiredParam('username');
 $password = $this->requiredParam('password');
 
-$players = Player::count([
+$players = Player::find([
     'username' => $username,
 ]);
 

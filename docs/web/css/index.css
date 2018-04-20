@@ -1,18 +1,39 @@
-li{
+#container{
+    position:relative;
+}
+.left li{
     cursor:pointer;
 }
 .left{
+    position:fixed;
+    top:0px;
     width:300px;
 }
 .middle{
+    margin-left:300px;
     width:calc(50% - 150px);
 }
 .right{
+    position:fixed;
+    top:0px;
+    right:0px;
+    height:600px;
     width:calc(50% - 150px);
+}
+.right textarea{
+    width:80%;
+    height:600px;
 }
 #container>*{
     float:left;
 }
 .middle li{
     list-style: none;
+}
+.item_block{
+    margin-top:30px;
+}
+a{
+    color:black;
+    text-decoration: none;
 }

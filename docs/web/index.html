@@ -11,23 +11,36 @@
 <div id="container">
     <div class="left">
         <ul v-for="group in items">
-            <li v-for="item in group" @click="viewItem(item)"> {{ item.name }} <strong>{{ item.url }}</strong></li>
+            <li v-for="item in group" @click="viewItem(item)"><a :href="'#'+item.name"> {{ item.name }} <strong>{{ item.url }}</strong></a></li>
         </ul>
     </div>
     <div class="middle">
-        <ul v-if="currentItem">
+       <!-- <ul v-if="currentItem">
             <li> {{ currentItem.desc }}</li>
             <li v-for="num in currentItem.param">
-                {{num.name}}<input v-model="num.val"    type="text">{{num.val}}
+                {{num.name}}<input v-model="num.val"  type="text">{{num.val}}
             </li>
             <li v-for="num in currentItem.param" class="params">
                 ({{num.desc}})
             </li>
             <li><input @click="simulation()" type="button" id="submit" value="模拟请求"></li>
+        </ul>-->
+        <ul v-for="group in items">
+            <ul class="item_block" v-for="item in group">
+                <li :id="item.name">接口名称:{{item.name}}</li>
+                <li>接口连接:{{item.url}}</li>
+                <li>接口描述:{{item.desc}}</li>
+                <li v-for="in_param in item.param">
+                    {{in_param.name}}<input type="text" v-model="in_param.val">{{in_param.val}}
+                </li>
+
+                <li v-for="in_param in item.param" v-if="in_param.desc!=null">(描述:{{in_param.desc}})</li>
+                <li><input type="button" @click="simulation(item)" id="submit" value="模拟请求"></li>
+            </ul>
         </ul>
     </div>
-    <div class="right">
-
+    <div  class="right">
+        <textarea name="" v-model="res_message" ></textarea>
     </div>
 </div>
 <script src="js/index.js"></script>

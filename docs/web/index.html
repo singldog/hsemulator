@@ -5,42 +5,39 @@
     <title>Title</title>
     <script src="js/vue.min.js"></script>
     <script src="js/vue-resource.js"></script>
+    <script src="js/muse-ui.js"></script>
+    <link rel="stylesheet" href="css/muse-ui.css" >
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 <div id="container">
     <div class="left">
-        <ul v-for="group in items">
-            <li v-for="item in group" @click="viewItem(item)"><a :href="'#'+item.name"> {{ item.name }} <strong>{{ item.url }}</strong></a></li>
+        <ul v-for="(group,index) in items">
+            <li class="item_list" is="mu-list-item">{{index}}</li>
+            <a v-for="item in group" @click="viewItem(item)"  is="mu-raised-button" :href="'#'+item.url">
+                <li v-if="item.name"> {{ item.name }} <br> {{ item.url }}</li>
+                <li v-else>{{item.url}}</li>
+            </a>
         </ul>
     </div>
     <div class="middle">
-       <!-- <ul v-if="currentItem">
-            <li> {{ currentItem.desc }}</li>
-            <li v-for="num in currentItem.param">
-                {{num.name}}<input v-model="num.val"  type="text">{{num.val}}
-            </li>
-            <li v-for="num in currentItem.param" class="params">
-                ({{num.desc}})
-            </li>
-            <li><input @click="simulation()" type="button" id="submit" value="模拟请求"></li>
-        </ul>-->
         <ul v-for="group in items">
             <ul class="item_block" v-for="item in group">
-                <li :id="item.name">接口名称:{{item.name}}</li>
+                <li :id="item.url">接口名称:{{item.name}}</li>
                 <li>接口连接:{{item.url}}</li>
                 <li>接口描述:{{item.desc}}</li>
                 <li v-for="in_param in item.param">
                     {{in_param.name}}<input type="text" v-model="in_param.val">{{in_param.val}}
                 </li>
-
                 <li v-for="in_param in item.param" v-if="in_param.desc!=null">(描述:{{in_param.desc}})</li>
-                <li><input type="button" @click="simulation(item)" id="submit" value="模拟请求"></li>
+                <li><textarea class="res" name="" v-model="item.res" ></textarea></li>
+                <li>
+                    <button class="item_button" is="mu-raised-button" label="模拟请求" @click="simulation(item)"></button>
+                    <mu-raised-button class="item_button" label="查看全部" @click="open"/>
+                </li>
             </ul>
         </ul>
-    </div>
-    <div  class="right">
-        <textarea name="" v-model="res_message" ></textarea>
     </div>
 </div>
 <script src="js/index.js"></script>

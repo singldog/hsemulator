@@ -11,7 +11,7 @@ class MongoBowl{
         $str = 'mongodb://'.
         conf('username', 'db').':'.
         conf('password', 'db').'@'.
-        conf('host', 'db').'.hse';
-        $this->mongo = new \MongoDB\Driver\Manager();
+        conf('host', 'db').'/'.conf('dbname', 'db');
+        $this->mongo = new \MongoDB\Driver\Manager($str);
     }
 }

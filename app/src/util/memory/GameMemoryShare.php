@@ -33,7 +33,11 @@ class GameMemoryShare{
     }
 
     public function removePlayerFromHall($token){
-        $this->gameHeader['players'] = array_diff($this->gameHeader['players'], [$token]);
+        if(is_array($token)){
+            $this->gameHeader['players'] = array_diff($this->gameHeader['players'], $token);
+        }else{
+            $this->gameHeader['players'] = array_diff($this->gameHeader['players'], [$token]);
+        }
         $this->saveGameHeaderInfo();
     }
 
@@ -49,24 +53,29 @@ class GameMemoryShare{
         $this->memoryShare->save($this->gameHeader, 0, self::BLOCKSIZE_HEADER_INFO);
     }
 
-    public function createGameBlock($gameData){
+    public function createGameBlock($gameData, $p1token, $p2token){
         if(!isset($this->gameHeader['games'])){
             $this->gameHeader['games'] = [];
         }
         $index = first_missing_index($this->gameHeader['games']);
         $gameToken = md5($id);
-        $this->gameHeader['games'][$index] = $gameToken;
+        $this->gameHeader['games'][$index] = ['gameToken' => $gameToken, 'playerTokens' => [$p1token, $p2token]];
         $this->saveGameHeaderInfo();
         $this->memoryShare->save($gameData, $this->gameOffset($index), self::BLOCKSIZE_ONE_PLAY);
+        return $gameToken;
     }
 
     public function readGameData($gameToken){
         if(!isset($this->gameHeader['games'])){
             throw new \Exception('无法获取大厅头信息');
         }
-        $index = array_search($gameToken, $this->gameHeader['games']);
+        foreach($this->gameHeader['games'] as $key => $gameInfo){
+            if($gameInfo['gameToken'] == $gameToken){
+                $index = $key;
+            }
+        }
         if($index)
-        return $this->memoryShare->read($this->gameOffset($index), self::BLOCKSIZE_ONE_PLAY);
+            return $this->memoryShare->read($this->gameOffset($index), self::BLOCKSIZE_ONE_PLAY);
     }
 
     public function saveGameData($gameToken, $gameData){

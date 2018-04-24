@@ -94,5 +94,9 @@ class Player implements IDatable{
             'initCards' => $this->initCards
         ];
     }
+
+    public static function spawnFromInfo($info){
+
+    }
     
 }

@@ -6,6 +6,7 @@
  * $param name:username required:true type:string
  * $param name:password required:true type:string
  * 
+ * @log date:4/20 text:在创建用户时添加了token
  */
 
 use \app\db\Player;
@@ -23,7 +24,8 @@ if(count($players)){
 
 $newPlayer = new Player();
 $newPlayer->username = $username;
-$newPlayer->password = $password;
+$newPlayer->password = sha1($password);
+$newPlayer->accessToken = md5($username.time());
 $result = $newPlayer->save();
 
 if($result->getInsertedCount()!=1){

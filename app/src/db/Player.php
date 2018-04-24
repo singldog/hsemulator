@@ -8,4 +8,9 @@ class Player implements \MongoDB\BSON\Persistable{
     public $username;
     public $password;
 
+    public static function findByToken($token){
+        $result = self::find(['accessToken'=>$token]);
+        return $result[0];
+    }
+
 }

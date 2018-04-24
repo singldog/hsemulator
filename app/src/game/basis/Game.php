@@ -8,6 +8,7 @@ namespace app\game\basis;
 class Game implements IDatable{
     public $player1;
     public $player2;
+    public $gameToken;
 
     public function addPlayer($player){
         if(!$this->player1){

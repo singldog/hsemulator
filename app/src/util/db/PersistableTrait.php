@@ -42,7 +42,7 @@ trait PersistableTrait{
     }
 
     public static function count($conditions = []){
-        $cursor = mongo()->executeReadCommand(conf('dbname', 'db'), new \MongoDB\Driver\Command(['count'=>self::collectionName(), 'query'=>$conditions]));
+        return count(self::find($conditions));
     }
 
     public static function collectionName(){

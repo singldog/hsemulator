@@ -96,7 +96,7 @@ class Player implements IDatable{
     }
 
     public static function spawnFromInfo($info){
-
+        
     }
     
 }

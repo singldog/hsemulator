@@ -6,6 +6,8 @@
  * 
  * @param name:autoCall required:false type:int desc:是否自动调用。请勿手动传入此参数！！！
  * $seealso api:sys/end-game-matching why:若要关闭此进程，请调用该接口
+ * 
+ * $log date:4/26 text:sleep函数参数单位为秒，从2000修改为2；file_get_contents设置超时时间为1秒
  */
 
 $started = data('gameMatchThread');
@@ -25,6 +27,13 @@ if($started===false){
 
 \app\game\basis\Hall::getInstance()->gameMatch();
 
-sleep(1000);
+sleep(2);
+
+$opts = [
+    'http'=>[
+        'method'=>"GET",
+        'timeout'=>1,
+    ]
+];
 $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'?autoCall=1';
-file_get_contents($url);
+@file_get_contents($url, false, stream_context_create($opts));

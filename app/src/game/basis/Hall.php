@@ -7,7 +7,7 @@ use \app\util\memory\GameMemoryShare;
 /**
  * 大厅类
  */
-class Hall implements IDatable{
+class Hall{
     use \app\util\traits\StaticInstanceTrait;
 
     public function gameMatch(){

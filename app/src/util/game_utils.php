@@ -28,3 +28,7 @@ function val_to_status_val($val, $status=0){
 function v($val){
     return val_to_status_val($val);
 }
+
+function game(){
+    return \app\basis\Game::$currentGame;
+}

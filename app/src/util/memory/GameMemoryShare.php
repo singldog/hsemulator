@@ -33,6 +33,9 @@ class GameMemoryShare{
     }
 
     public function removePlayerFromHall($token){
+        if(!array_key_exists('players', $this->gameHeader) || !is_array($this->gameHeader['players'])){
+            return;
+        }
         if(is_array($token)){
             $this->gameHeader['players'] = array_diff($this->gameHeader['players'], $token);
         }else{

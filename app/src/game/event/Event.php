@@ -16,6 +16,7 @@ class Event{
         if(array_key_exists($key, $this->datapack)){
             return $this->datapack[$key];
         }
+        throw new Exception('尝试使用不存在的事件数据');
     }
 
 }

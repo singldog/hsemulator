@@ -19,11 +19,11 @@
                 <mu-menu-item v-for="text in list"  :value="text" :title="text" @click="change_url(text)"  />
             </ul>
         </div>
-        <ul v-for="(group,index) in items">
-            <mu-paper class="demo-menu">
-                <mu-menu>
-                    <li class="item_list"  is="mu-list-item" :title="index">
-                    <a v-for="item in group" slot="nested"   @click="viewItem(item)"  is="mu-list-item" :title="item.name?item.name:item.url" :href="'#'+item.url">
+        <ul  v-for="(group,index) in items">
+            <mu-paper  class="demo-menu">
+                <mu-menu >
+                    <li  class="item_list"  is="mu-list-item" :title="index">
+                    <a v-for="item in group" slot="nested"    @click="viewItem(item)"  is="mu-list-item" :title="item.name?item.name:item.url" :href="'#'+item.url">
                         <span slot="describe" v-if="item.name" v-html="item.url"></span>
                     </a>
                     </li>

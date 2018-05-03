@@ -7,32 +7,43 @@ var app = new Vue({
         items:{},
         result:{},
         big_url:"http://47.94.15.53:8010/sys/api",
-        list: ['阴阳师', '影之刃', '天下HD', '穿越火线', '英雄联盟', '王者荣耀']
+        list: ['http://47.94.15.53:8010/sys/api','http://47.94.15.53:8010/sys/ap']
     },
     created:function () {
-
-        this.$http.get(this.big_url).then(function (res) {
-            this.items = res.body.data;
-            for(var item in this.items){
-                for(var i=0;i<this.items[item].length;i++){
-                    this.items[item][i].url=" \n "+this.items[item][i].url;
-                    this.items[item][i].res=null;
-                    if(this.items[item][i].param){
-                        for(var j=0;j<this.items[item][i].param.length;j++){
-                            this.items[item][i].param[j].val=null;
+        this.refreshApiList();
+        this.big_url._set = {};
+    },
+    watch:{
+        big_url:function () {
+            this.refreshApiList();
+        }
+    },
+    methods:{
+        refreshApiList:function(){
+            console.log(this.big_url);
+            this.$http.get(this.big_url).then(function (res) {
+                this.items = res.body.data;
+                for(var item in this.items){
+                    for(var i=0;i<this.items[item].length;i++){
+                        this.items[item][i].url=" \n "+this.items[item][i].url;
+                        this.items[item][i].res=null;
+                        if(this.items[item][i].param){
+                            for(var j=0;j<this.items[item][i].param.length;j++){
+                                this.items[item][i].param[j].val=null;
+                            }
                         }
                     }
                 }
-            }
-        })
-    },
-    methods:{
+            })
+        },
         viewItem: function(item){
             this.currentItem = item;
         },
         change_url:function(text){
-            console.log(text);
-            console.log(this.big_url);
+            if(text){
+                this.big_url=text;
+            }
+            this.refreshApiList();
         },
         simulation:function (item) {
             this.currentItem = item;
@@ -45,12 +56,11 @@ var app = new Vue({
                     }
                 })
             }
-            sim.$http.get(get_url).then(function (res) {
+            sim.$http.get(get_url).then(function (res,err) {
                 var body_text = res.bodyText;
                 body_text = body_text.replace(/\,/g,'\n');
                 Vue.set(item, 'res', body_text);
                 this.$forceUpdate();
-                console.log(item.res);
             })
         },
         open () {

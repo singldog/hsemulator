@@ -21,6 +21,26 @@ trait DefaultCardTrait{
         if($this->processMinion){
             $this->processMinion($minion);
         }
+        $this->initEventListeners();
     }
+
+    public function initEventListeners(){
+        if(isset($this->eventListeners)){
+            foreach($this->eventListeners as $listener){
+                game()->registerEventListener($listener);
+            }
+        }
+    }
+
+    public function addEventListener($listener){
+        if(isset($this->eventListeners)){
+            if(!is_array($this->eventListeners)){
+                $this->eventListeners = [];
+            }
+        }
+        $this->eventListeners[] = $listener;
+        game()->registerEventListener($listener);
+    }
+    
 
 }

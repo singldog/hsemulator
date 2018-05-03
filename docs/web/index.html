@@ -2,60 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="js/vue.min.js"></script>
-    <script src="js/vue-resource.js"></script>
-    <script src="js/muse-ui.js"></script>
-    <link rel="stylesheet" href="css/muse-ui.css" >
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开发文档</title>
 </head>
 <body>
-<div id="container">
-    <div class="left">
-        <div class="select_field">
-            <ul v-model="big_url"  is="mu-select-field" label="选择域名">
-                <input @keyup.native.enter="change_url()" type="text" is="mu-text-field" v-model="big_url">
-                <mu-menu-item v-for="text in list"  :value="text" :title="text" @click="change_url(text)"  />
-            </ul>
-        </div>
-        <ul v-for="(group,index) in items">
-            <mu-paper class="demo-menu">
-                <mu-menu>
-                    <li class="item_list"  is="mu-list-item" :title="index">
-                    <a v-for="item in group" slot="nested"   @click="viewItem(item)"  is="mu-list-item" :title="item.name?item.name:item.url" :href="'#'+item.url">
-                        <span slot="describe" v-if="item.name" v-html="item.url"></span>
-                    </a>
-                    </li>
-                </mu-menu>
-            </mu-paper>
-            <!--<div is="mu-list">
-                <div is="mu-list-item" v-for="item in group" :title="item.name?item.name:item.url">
-                    <span slot="describe" v-if="item.name" v-html="item.url"></span>
-                </div>
-            </div>-->
-        </ul>
-    </div>
-    <div class="middle">
-        <ul v-for="group in items">
-            <ul class="item_block" v-for="item in group">
-                <li><textarea class="res" name="" v-model="item.res" ></textarea></li>
-                <li :id="item.url">接口名称:{{item.name}}</li>
-                <li>接口连接:{{item.url}}</li>
-                <li>接口描述:{{item.desc}}</li>
-                <li v-for="in_param in item.param">
-                    参数:{{in_param.name}}<input type="text" v-model="in_param.val">{{in_param.val}}
-                </li>
-                <li v-for="in_param in item.param" v-if="in_param.desc!=null">(描述:{{in_param.desc}})</li>
-
-                <li>
-                    <button class="item_button" is="mu-raised-button" label="模拟请求" @click="simulation(item)"></button>
-                    <mu-raised-button class="item_button" label="查看全部" @click="open"/>
-                </li>
-            </ul>
-        </ul>
-    </div>
-</div>
-<script src="js/index.js"></script>
+    
 </body>
 </html>

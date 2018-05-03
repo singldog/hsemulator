@@ -19,4 +19,8 @@ class Event{
         throw new Exception('尝试使用不存在的事件数据');
     }
 
+    public function __get($name){
+        return $this->data($name);
+    }   
+
 }

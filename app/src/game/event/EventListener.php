@@ -2,7 +2,7 @@
 
 namespace app\game\event;
 
-abstract class EventAdapter{
+abstract class EventListener{
 
     protected $acceptedEventType = [];
 
@@ -13,5 +13,5 @@ abstract class EventAdapter{
         return false;
     }
 
-    public abstract function adaptEvent($event);
+    public abstract function listenEvent($event);
 }

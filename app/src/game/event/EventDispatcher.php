@@ -12,10 +12,10 @@ class EventDispatcher{
     }
 
     public function dispatchEvent($event){
-        $eventAdapters = game()->getAllEventAdapters();
-        foreach($eventAdapters as $adapter){
-            if($adapter->acceptEvent($event)){
-                $adapter->adaptEvent($event);
+        $eventListeners = game()->getAllEventListeners();
+        foreach($eventListeners as $listener){
+            if($listener->acceptEvent($event)){
+                $listener->listenEvent($event);
             }
         }
     }

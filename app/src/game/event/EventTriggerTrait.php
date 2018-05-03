@@ -22,7 +22,7 @@ trait EventTriggerTrait{
             $listeners = $this->eventListeners[$eventName];
             if(is_array($listeners))
             foreach($listeners as $listener){
-                $listener->adaptEvent(new Event($this, $args));
+                $listener->listenEvent(new Event($this, $args));
             }
         }
     }

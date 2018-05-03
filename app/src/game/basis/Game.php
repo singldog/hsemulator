@@ -9,7 +9,7 @@ class Game implements IDatable{
     public $player1;
     public $player2;
     public $gameToken;
-    public $eventAdapters = [];
+    public $eventListeners = [];
 
     public function addPlayer($player){
         if(!$this->player1){
@@ -24,20 +24,16 @@ class Game implements IDatable{
         }
     }
 
-    public function addEventAdapter($adapter){
-        $this->eventAdapters[] = $adapter;
+    public function registerEventListener($listener){
+        $this->eventListeners[] = $listener;
     }
 
-    public function removeEventAdapter($adapter){
-        $this->eventAdapters = array_diff($this->eventAdapters, [$adapter]);
+    public function removeEventListener($listener){
+        $this->eventListeners = array_diff($this->eventListeners, [$listener]);
     }
 
-    public function removeEventAdapters($adapters){
-        $this->eventAdapters = array_diff($this->eventAdapters, $adapters);
-    }
-
-    public function getAllEventAdapters(){
-        return $this->eventAdapters;
+    public function getAllEventListeners(){
+        return $this->eventListeners;
     }
 
     public function start(){

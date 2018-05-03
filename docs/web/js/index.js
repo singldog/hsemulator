@@ -6,12 +6,16 @@ var app = new Vue({
         currentItem:null,
         items:{},
         result:{},
+        big_url:"http://47.94.15.53:8010/sys/api",
+        list: ['阴阳师', '影之刃', '天下HD', '穿越火线', '英雄联盟', '王者荣耀']
     },
     created:function () {
-        this.$http.get('http://47.94.15.53:8010/sys/api').then(function (res) {
+
+        this.$http.get(this.big_url).then(function (res) {
             this.items = res.body.data;
             for(var item in this.items){
                 for(var i=0;i<this.items[item].length;i++){
+                    this.items[item][i].url=" \n "+this.items[item][i].url;
                     this.items[item][i].res=null;
                     if(this.items[item][i].param){
                         for(var j=0;j<this.items[item][i].param.length;j++){
@@ -20,12 +24,15 @@ var app = new Vue({
                     }
                 }
             }
-            console.log(this.lists);
         })
     },
     methods:{
         viewItem: function(item){
             this.currentItem = item;
+        },
+        change_url:function(text){
+            console.log(text);
+            console.log(this.big_url);
         },
         simulation:function (item) {
             this.currentItem = item;

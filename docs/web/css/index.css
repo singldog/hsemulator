@@ -18,7 +18,7 @@
 }
 .middle{
     margin-left:300px;
-    width:calc(50% - 150px);
+    width:calc(100% - 300px);
 }
 .right{
     position:fixed;
@@ -38,7 +38,9 @@ li{
     list-style: none;
 }
 .item_block{
-    margin-bottom:50px;
+    padding-left:10px;
+    padding-top:25px;
+    padding-bottom:25px;
 }
 a{
     color:black;
@@ -48,8 +50,10 @@ a{
     line-height:30px;
 }
 .res{
-    height:100px;
-    width:100%;
+    height:150px;
+    width:50%;
+    margin-right:20%;
+    float:right;
 }
 .item_button{
     margin:15px;
@@ -63,4 +67,28 @@ a{
 .item_list{
     font-weight: bold;
     font-size:18px;
+}
+mu-menu a{
+    word-break:break-all;
+}
+.item_block:nth-of-type(odd){
+    background:#eeffff;
+}
+.item_block:nth-of-type(even){
+    background:#ffffee;
+}
+ul{
+    padding-left:0px;
+}
+.select_field{
+    padding-left:10px;
+}
+.mu-text-field{
+    margin:0px;
+}
+.mu-text-field-input{
+    padding-left:10px;
+}
+.mu-text-field-content{
+    padding-bottom:0px;
 }

@@ -2,6 +2,7 @@
 
 /**
  * @name 用户注册
+ * @icon people
  * 
  * $param name:username required:true type:string
  * $param name:password required:true type:string

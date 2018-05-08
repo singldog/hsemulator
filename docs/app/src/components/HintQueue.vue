@@ -1,7 +1,7 @@
 <template>
     <mu-popup position="top" :overlay="false" popupClass="pop-up-hint-queue" :open="hasHint">
         <transition-group name="hint-message" >
-            <mu-paper v-for="hint in hints" :key="hint" class="pop-up-hint">{{ hint.message }}</mu-paper>
+            <mu-paper v-for="hint in hints" :key="JSON.stringify(hint)" class="pop-up-hint">{{ hint.message }}</mu-paper>
         </transition-group>
     </mu-popup>
 </template>
@@ -19,10 +19,13 @@
             }
         },
         methods : {
-            hint(message, time=3000){
+            hint(message, time){
+                if(!time){
+                    time = 2500;
+                }
                 this.hints.unshift({
                     message,
-                    timestamp:Date.parse(new Date())
+                    timestamp:new Date().valueOf()
                 });
                 setTimeout(()=>{
                     this.hints.splice(this.hints.indexOf(message), 1);
@@ -33,7 +36,7 @@
 </script>
 <style>
 
-.pop-up-hint-queue {
+.mu-popup.pop-up-hint-queue {
   width: 100%;
   display: flex;
   flex-direction: column;

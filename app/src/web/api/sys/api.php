@@ -3,6 +3,7 @@
 /**
  * @name 获取所有系统api
  * @desc 分组将所有api信息返回，api信息从文件注释中读取
+ * @icon featured_play_list
  * 
  * $param name:requireRedundant type:int valueAllowed:[0,1] default:0 required:false desc:是否获取非必要信息，传1可获取全部，例如createTime，modifyTime
  * 
@@ -39,7 +40,7 @@ foreach(scandir($apiDir) as $group){
             $attrKey = $attr[0];
             $attrBecon = substr($attrKey, 0, 1);
             $attrName = substr($attrKey, 1, strlen($attrKey)-1);
-            $attrValue = $attr[1];
+            $attrValue = count($attr)>1?$attr[1]:$attr[0];
             $attrValueArrTemp = explode(" ", $attrValue);
             $attrValueArr = [];
             foreach($attrValueArrTemp as $val){

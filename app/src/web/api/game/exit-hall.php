@@ -2,6 +2,7 @@
 
 /**
  * @name 玩家退出大厅
+ * @icon arrow_backward
  * @desc 从内存头信息中移除玩家token
  * $param name:playerToken desc:玩家令牌
  * @deprecated

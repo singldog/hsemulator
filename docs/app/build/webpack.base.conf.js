@@ -13,7 +13,7 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './src/index.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -41,6 +41,11 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
+      /* {  
+        test: /\.css$/,  
+        loader: 'css-loader!vue-style-loader',
+        include: [resolve('src'), resolve('node_modules/muse-ui/dist')]
+      }, */
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',

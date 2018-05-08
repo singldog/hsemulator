@@ -1,8 +1,2 @@
 
 /*appbar稍微缩小一些，从原生的64px缩小至56px*/
-.mu-appbar{
-    height:56px;
-}
-.mu-appbar-title{
-    line-height:56px;
-}

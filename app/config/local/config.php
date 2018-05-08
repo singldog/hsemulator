@@ -3,7 +3,7 @@
 return [
     'dirSeperator' => "\\",
     'assetHost' => 'unknown',
-    'lineBreaker' => "\n",
+    'lineBreaker' => "\r\n",
     'db' => [
         'username' => 'chutz',
         'password' => 'C7H14mongo',

@@ -1,14 +1,4 @@
-*{
-    font-family: "Consolas", "等线";
-}
 
-body{
-    font-size:1.5em;
-}
-
-html, body, .page-split, .page-split>*{
-    height:100%;
-}
 
 
 

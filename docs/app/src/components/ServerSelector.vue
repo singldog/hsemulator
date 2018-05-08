@@ -1,7 +1,7 @@
 <template>
     <mu-paper class="select-server-paper" :zDepth="1">
-        <mu-select-field label="选择api服务器" class="select-server" v-model="selectedServer">
-            <mu-menu-item v-for="elem in serverSet" :key="elem.url" :value="elem" :title="elem.name" />
+        <mu-select-field label="选择api服务器" class="select-server" ref="serverSelect" v-model="selectedServer">
+            <mu-menu-item v-for="(elem, index) in serverSet" :key="elem.url" :value="index" :title="elem.name" />
         </mu-select-field>
         <mu-float-button icon="add" secondary mini class="add-server-btn" ref="button" @click="toggle"/>
         <mu-popover :trigger="trigger" :open="open" @close="handleClose" 
@@ -25,21 +25,38 @@
                 trigger: null,
                 newServerUrl: '',
                 newServerName: '',
-                selectedServer: null,
+                selectedServerNum: 0,
                 serverSet: [
                     {
-                        name : '本地服务器',
-                        url : 'http://local-api.hse.com'
+                        name : '阿里云服务器',
+                        url : 'http://47.94.15.53:8010/'
                     },
                     {
-                        name : '阿里云服务器',
-                        url : 'http://47.94.15.53:8010'
+                        name : '本地服务器',
+                        url : 'http://local-api.hse.com/'
                     }
                 ]
             }
         },
+        computed:{
+            selectedServer:{
+                get(){
+                    return this.selectedServerNum;
+                },
+                set(val){
+                    this.selectedServerNum = val;
+                    this.emitChange();
+                }
+            },
+            selectedServerObj:{
+                get(){
+                    return this.serverSet[this.selectedServer];
+                }
+            }
+        },
         mounted () {
             this.trigger = this.$refs.button.$el
+            this.selectedServer = 0;
         },
         methods: {
             toggle () {
@@ -54,6 +71,9 @@
             },
             handleClose (e) {
                 this.open = false
+            },
+            emitChange(){
+                this.$emit('serverChanged', {selectedServer:this.selectedServerObj});
             },
             submit(){
                 let push = true;
@@ -71,8 +91,8 @@
                     name: this.newServerName,
                     url: this.newServerUrl,
                 };
-                this.selectedServer = newServer;
-                this.serverSet.push(newServer);
+                let newLength = this.serverSet.push(newServer);
+                this.selectedServer = newLength-1;
                 this.toggle();
             }
         }
@@ -82,7 +102,7 @@
 <style>
 .select-server-paper{
     width:calc(100% - 20px);
-    margin:10px;
+    margin:10px 10px 12px;
     padding:10px 15px 5px;
     display:flex;
 }

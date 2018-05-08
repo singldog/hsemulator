@@ -2,6 +2,7 @@
 
 /**
  * @name 用户登陆
+ * @icon account_circle
  * 
  * $param name:username required:true type:string
  * $param name:password required:true type:string

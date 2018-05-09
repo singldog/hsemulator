@@ -75,6 +75,7 @@ export default {
 
 body{
     font-size:1.5em;
+    perspective: 1024px;
 }
 
 html, body, .page-split, .page-split>*{
@@ -124,6 +125,16 @@ html, body, .page-split, .page-split>*{
 
 .split-cell-right .mu-appbar{
     text-align:center;
+}
+
+@media screen and (max-width:720px){
+    .split-cell-left{
+        flex:1;
+    }
+
+    .split-cell-right{
+        display:none;
+    }
 }
 
 </style>

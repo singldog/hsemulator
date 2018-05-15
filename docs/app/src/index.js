@@ -8,6 +8,8 @@ import App from './App'
 import MuseUI from 'muse-ui'
 import VueResouce from 'vue-resource'
 
+import nothing from './function.js'
+
 Vue.config.productionTip = false;
 Vue.use(VueResouce);
 Vue.use(MuseUI);
@@ -19,5 +21,5 @@ window.Vue = Vue;
 window.app = new Vue({
   el: '#app',
   components: { App },
-  template: '<App ref="app"/>'
+  template: '<App ref="app"/>',
 })

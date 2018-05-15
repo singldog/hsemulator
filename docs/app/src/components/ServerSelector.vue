@@ -28,12 +28,12 @@
                 selectedServerNum: 0,
                 serverSet: [
                     {
-                        name : '阿里云服务器',
-                        url : 'http://47.94.15.53:8010/'
-                    },
-                    {
                         name : '本地服务器',
                         url : 'http://local-api.hse.com/'
+                    },
+                    {
+                        name : '阿里云服务器',
+                        url : 'http://47.94.15.53:8010/'
                     }
                 ]
             }
@@ -191,7 +191,7 @@
     }
 
     .add-server-pop.mu-popover-enter{
-        transform:scale(.85, .85) translateY(-40px) rotateX(-36deg);
+        transform:scale(.85, .85) translateY(-70px) rotateX(-12deg);
     }
 
     .add-server-pop.mu-popover-leave{
@@ -199,7 +199,7 @@
     }
 
     .add-server-pop.mu-popover-leave-to{
-        transform:scale(.85, .85) translateY(-40px) rotateX(-36deg);
+        transform:scale(.85, .85) translateY(-70px) rotateX(-12deg);
     }
 
 }

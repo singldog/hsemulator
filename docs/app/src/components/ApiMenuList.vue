@@ -1,9 +1,9 @@
 <template>
     <mu-list class="api-menu-list" v-if="apiList!=null && apiList.length!=0">
         <mu-list-item v-for="(apiGroup, groupName) in apiList" :key="groupName" :title="groupName.toUpperCase()" toggleNested>
-            <mu-icon slot="left" value="folder"/>
+            <mu-icon slot="left" value="folder" class='folder-icon'/>
             <mu-list-item v-for="(api, index) in apiGroup" :key="index" :title="api.name?api.name:api.url" :describeText="api.name?api.url:''" slot="nested" inset>
-                <mu-icon slot="left" :value="api.icon?api.icon:'toc'"/>
+                <mu-icon slot="left" :value="api.icon?api.icon:'toc'" />
             </mu-list-item>
         </mu-list-item>
     </mu-list>
@@ -26,4 +26,5 @@
 .api-menu-list .mu-item.show-left{
     padding-left:64px;
 }
+
 </style>

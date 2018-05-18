@@ -47,7 +47,8 @@ import ApiListPageItem from './ApiListPageItem';
                     //限制头部不会超出
                     Math.min(apiBlock.offsetTop - menuOffset + 100, apiBlock.offsetTop - 48), 
                     //限制底部不会超出
-                    apiBlock.offsetTop - page.offsetHeight + apiBlock.offsetHeight
+                    apiBlock.offsetTop - page.offsetHeight + apiBlock.offsetHeight,
+                    0
                 );
                 
                 let velo = 1;
@@ -56,12 +57,13 @@ import ApiListPageItem from './ApiListPageItem';
                 let scrollFunc = ()=>{
                     velo+=1;
                     speed+=velo;
-                    page.scrollTop += speed*direction;
-                    if((direction==1&&(page.scrollTop > scrollTo)) || (direction==-1&&(page.scrollTop < scrollTo))){
-                        page.scrollTop = scrollTo;
+                    let scrollTmp = page.scrollTop + speed*direction;
+                    if((direction==1&&(scrollTmp >= scrollTo)) || (direction==-1&&(scrollTmp <= scrollTo))){
+                        scrollTmp = scrollTo;
                     }else{
                         window.requestAnimationFrame(scrollFunc);
                     }
+                    page.scrollTop = scrollTmp;
                 };
                 window.requestAnimationFrame(scrollFunc);
 

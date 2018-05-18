@@ -19,3 +19,16 @@ Array.prototype.pluckMap = function(key){
     });
     return ret;
 }
+
+window.getElementTop = function(e, target){
+    let offset = e.offsetTop;
+    if(e.offsetParent != target){
+        offset = offset - e.offsetParent.scrollTop + getElementTop(e.offsetParent, target);
+    }
+    return offset;
+}
+
+
+window.isArray = function(obj){ 
+    return Object.prototype.toString.call(obj) === '[object Array]';   
+};

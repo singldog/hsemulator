@@ -28,13 +28,13 @@
                 selectedServerNum: 0,
                 serverSet: [
                     {
+                        name : '阿里云服务器',
+                        url : 'http://47.94.15.53:8010/'
+                    },
+                    {
                         name : '本地服务器',
                         url : 'http://local-api.hse.com/'
                     },
-                    {
-                        name : '阿里云服务器',
-                        url : 'http://47.94.15.53:8010/'
-                    }
                 ]
             }
         },
@@ -73,7 +73,7 @@
                 this.open = false
             },
             emitChange(){
-                this.$emit('serverChanged', {selectedServer:this.selectedServerObj});
+                this.$emit('serverChanged');
             },
             submit(){
                 let push = true;
@@ -84,7 +84,7 @@
                     }
                 })
                 if(!push){
-                    app.$refs.app.hint('已经存在相同URL的服务器地址');
+                    app.hint('已经存在相同URL的服务器地址');
                     return;
                 }
                 let newServer = {

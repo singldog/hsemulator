@@ -18,8 +18,11 @@ Vue.config.silent = true;
 window.Vue = Vue;
 
 /* eslint-disable no-new */
-window.app = new Vue({
+window.appContainer = new Vue({
   el: '#app',
   components: { App },
   template: '<App ref="app"/>',
+  mounted(){
+    window.app = this.$refs.app;
+  }
 })

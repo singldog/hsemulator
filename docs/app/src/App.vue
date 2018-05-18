@@ -53,7 +53,11 @@ export default {
                 return;
             }
             this.refreshing = true;
-            Vue.http.get(this.selectedServer.url+'sys/api').then((response)=>{
+            Vue.http.get(this.selectedServer.url+'sys/api', {
+                params:{
+                    'requireRedundant' : 1
+                }
+            }).then((response)=>{
                 if(response.body && response.body.success){
                     app.$emit('onApiRefreshed', {apiList:response.body.data});
                     this.apiList = response.body.data;
@@ -66,8 +70,8 @@ export default {
                     console.log(error);
             });
         },
-        changeServer(data){
-            this.selectedServer = data.selectedServer;
+        changeServer(){
+            this.selectedServer = this.$refs.serverSelector.selectedServerObj;
             this.refreshApiList();
         }
     },
@@ -130,8 +134,8 @@ html, body, .page-split, .page-split>*{
 .split-cell-right{
     flex: 8;
     height: 100%;
-    box-shadow:0 0 60px 0 rgba(0, 0, 0, .15);
-    z-index:10;
+    box-shadow:0 0 60px 0 rgba(0, 0, 0, .1);
+    z-index:12;
 }
 
 .split-cell-right .mu-appbar{

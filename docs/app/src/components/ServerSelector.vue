@@ -28,12 +28,12 @@
                 selectedServerNum: 0,
                 serverSet: [
                     {
-                        name : '阿里云服务器',
-                        url : 'http://47.94.15.53:8010/'
+                        name : '本地服务器',
+                        url : 'http://localhost:1024/'
                     },
                     {
-                        name : '本地服务器',
-                        url : 'http://local-api.hse.com/'
+                        name : 'Vultr服务器',
+                        url : 'http://45.77.222.41:8010/'
                     },
                 ]
             }
@@ -164,7 +164,7 @@
         margin-top:64px;
         transform-origin: center -150px;
         line-height:0;
-        transition:transform .5s, opacity .5s;
+        transition:transform .3s, opacity .4s;
     }
 
     .add-server-pop .add-server-form{
@@ -191,7 +191,7 @@
     }
 
     .add-server-pop.mu-popover-enter{
-        transform:scale(.85, .85) translateY(-70px) rotateX(-12deg);
+        transform:scale(.85, .85) translateY(-50px) rotateX(-12deg);
     }
 
     .add-server-pop.mu-popover-leave{
@@ -199,7 +199,7 @@
     }
 
     .add-server-pop.mu-popover-leave-to{
-        transform:scale(.85, .85) translateY(-70px) rotateX(-12deg);
+        transform:scale(.85, .85) translateY(-50px) rotateX(-12deg);
     }
 
 }

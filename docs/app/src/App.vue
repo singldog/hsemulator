@@ -113,7 +113,7 @@ html, body, .page-split, .page-split>*{
 }
 
 .split-cell-left{
-    flex: 2;
+    flex: 3;
     min-width:300px;
     z-index:11;
     background-color: rgb(233, 233, 233);
@@ -132,7 +132,7 @@ html, body, .page-split, .page-split>*{
 }
 
 .split-cell-right{
-    flex: 8;
+    flex: 12;
     height: 100%;
     box-shadow:0 0 60px 0 rgba(0, 0, 0, .1);
     z-index:12;

@@ -27,9 +27,12 @@ import ApiListPageItem from './ApiListPageItem';
                                 ret.push(apiProcessed);
                             }
                         }
-                    } 
+                    }
                 }
                 return ret;
+            },
+            openApiPage(){
+                
             }
         },
         mounted(){

@@ -5,11 +5,10 @@
             <div class="api-detail-url">
                 {{ apiPro.url }} 
                 <div class="modifyTime tooltip-icon" 
-                    v-if="apiPro.modifyTimeFormatted" 
-                    ref="modifyTimeIcon" 
-                    @mouseenter="showModifyTime"
-                    @mouseleave="hideModifyTime"
-                >
+                v-if="apiPro.modifyTimeFormatted" 
+                ref="modifyTimeIcon" 
+                @mouseenter="showModifyTime"
+                @mouseleave="hideModifyTime">
                     <mu-icon 
                         value="brush" 
                         size="28" >
@@ -23,11 +22,10 @@
                     />
                 </div>
                 <div class="createTime tooltip-icon" 
-                    v-if="apiPro.createTimeFormatted" 
-                    ref="createTimeIcon" 
-                    @mouseenter="showCreateTime"
-                    @mouseleave="hideCreateTime"
-                >
+                v-if="apiPro.createTimeFormatted" 
+                ref="createTimeIcon" 
+                @mouseenter="showCreateTime"
+                @mouseleave="hideCreateTime">
                     <mu-icon 
                         value="add_circle" 
                         size="28" 
@@ -66,7 +64,7 @@
                     <mu-td><mu-checkbox v-model="param.selected" :disabled="param.required"/> <br/></mu-td>
                     <mu-td :title="param.name">{{ param.name }}</mu-td>
                     <mu-td :title="param.desc">{{ param.desc }}</mu-td>
-                    <mu-td><mu-text-field hintText="param.desc" fullWidth class="param-val-input" spellcheck="false" v-model="param.inputVal"/></mu-td>
+                    <mu-td><mu-text-field :hintText="param.desc" fullWidth class="param-val-input" spellcheck="false" v-model="param.inputVal"/></mu-td>
                     <mu-td :title="param.required?'必须':'非必需'">
                         <mu-icon :value="param.required?'done':'clear'" :size="24" />
                     </mu-td>
@@ -202,11 +200,13 @@
     padding:20px;
     overflow:hidden;
     position: relative;
+    box-shadow:0 0 20 0 transparent inset;
 }
 
 .api-detail-list-item.hightlighted{
-    border:1px solid rgba(255, 82, 82, .5);
-    z-index:24;
+    /*border:1px solid rgba(255, 82, 82, .5);*/
+    box-shadow:0 0 5px 0 #ff5252 inset;
+    transition: .5s;
 }
 
 .api-detail-list-item:nth-of-type(odd){

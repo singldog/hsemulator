@@ -1,6 +1,6 @@
 <template>
     <div class="api-detail-list-ctn" v-if="apiListArrayed.length">
-        <api-list-page-item v-for="api in apiListArrayed" :key="api.url" :data-url="api.url" :class="api.hightlighted?['hightlighted']:[]" :api="api"></api-list-page-item>
+        <api-list-page-item v-for="api in apiListArrayed" :key="api.url" :data-url="api.url" :class="api.hightlighted?['hightlighted']:[]" :api="api" ></api-list-page-item>
     </div>
 </template>
 
@@ -31,7 +31,7 @@ import ApiListPageItem from './ApiListPageItem';
                 }
                 return ret;
             },
-            openApiPage(){
+            openApiPage(apiName){
                 
             }
         },

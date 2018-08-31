@@ -1,0 +1,1 @@
+db.createUser({user:"chutz",pwd:"C7H14mongo",roles:[{ role:"dbOwner",db:"hse"}]})
